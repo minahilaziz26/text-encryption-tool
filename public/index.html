@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Text encryption, decryption and SHA-256 hashing learning tool.">
+  <title>CipherLab | Text Encryption Tool</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">◆</span><span>Cipher<span class="brand-emphasis">Lab</span></span></div>
+      <span class="header-tag"><span class="status-dot"></span> LOCAL CRYPTO WORKSPACE</span>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR TEXT. YOUR CONTROL.</div>
+        <h1 id="hero-title">Make every message <span>more secure.</span></h1>
+        <p class="subtitle">Encrypt, decrypt, and hash text in one clean workspace. Explore classic ciphers and modern authenticated encryption.</p>
+        <div class="hero-chips"><span>◇ 3 algorithms</span><span>↻ Reversible encryption</span><span>✓ Input validation</span></div>
+      </section>
+
+      <section class="workspace" aria-label="Text encryption workspace">
+        <div class="workspace-header"><div><div class="eyebrow micro">WORKSPACE / 01</div><h2>Cryptography studio</h2></div><span class="workspace-label">AES-256-GCM AVAILABLE</span></div>
+        <div class="operation-tabs" role="group" aria-label="Choose an operation">
+          <button type="button" class="tab active" data-mode="encrypt" aria-pressed="true"><span aria-hidden="true">↗</span> Encrypt</button>
+          <button type="button" class="tab" data-mode="decrypt" aria-pressed="false"><span aria-hidden="true">↙</span> Decrypt</button>
+          <button type="button" class="tab" data-mode="hash" aria-pressed="false"><span aria-hidden="true">#</span> SHA-256 Hash</button>
+        </div>
+        <form id="crypto-form" novalidate>
+          <div class="form-grid">
+            <div class="field" id="algorithm-field"><label for="algorithm">ENCRYPTION ALGORITHM <span class="required">*</span></label>
+              <div class="select-wrap"><select id="algorithm" name="algorithm" required><option value="">Choose an algorithm</option><option value="caesar">Caesar Cipher · classical</option><option value="vigenere">Vigenère Cipher · classical</option><option value="aes">AES-256-GCM · modern</option></select><span class="select-arrow" aria-hidden="true">⌄</span></div>
+            </div>
+            <div class="field" id="key-field"><label id="key-label" for="key">SHIFT / KEY <span class="required">*</span></label><input id="key" name="key" type="text" placeholder="Select an algorithm first" autocomplete="off" spellcheck="false" required disabled><div class="field-hint" id="key-hint">Select a method to see its key requirements.</div></div>
+          </div>
+          <div class="field message-field"><div class="label-row"><label id="text-label" for="plaintext">PLAINTEXT <span class="required">*</span></label><span id="character-count" class="counter">0 / 10,000</span></div><textarea id="plaintext" name="text" placeholder="Type or paste the message you want to encrypt..." maxlength="10000" spellcheck="false" required></textarea></div>
+          <div class="form-footer"><span class="helper"><span aria-hidden="true">◈</span> Text is processed by your local Node.js server.</span><div class="form-actions"><button type="button" id="clear-button" class="button secondary">Clear all</button><button id="submit-button" type="submit" class="button primary"><span id="submit-icon" aria-hidden="true">↗</span> <span id="submit-label">Encrypt text</span></button></div></div>
+        </form>
+        <div id="alert" role="alert" class="alert" hidden></div>
+        <div class="output-panel"><div class="output-heading"><div><span class="output-indicator"></span><h3 id="result-heading">ENCRYPTED OUTPUT</h3></div><span id="result-tag" class="output-tag">AWAITING INPUT</span></div><textarea id="result" aria-label="Result" placeholder="Your encrypted result will appear here..." readonly spellcheck="false"></textarea><div class="output-footer"><span id="output-details">The result appears after processing.</span><button type="button" id="copy-button" class="button copy" disabled><span aria-hidden="true">⧉</span> <span id="copy-label">Copy result</span></button></div></div>
+      </section>
+
+      <section class="info-section" aria-labelledby="learn-title"><div class="section-title"><div class="eyebrow micro">UNDER THE HOOD</div><h2 id="learn-title">Choose the right technique</h2><p>Learn the difference between educational ciphers, real encryption, and one-way hashing.</p></div><div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon">01</span><h3>Caesar Cipher</h3><p>Shifts English letters by a fixed number of positions. Great for understanding encryption, but easy to break.</p><span class="feature-label">EDUCATIONAL ONLY</span></article>
+        <article class="feature-card"><span class="feature-icon">02</span><h3>Vigenère Cipher</h3><p>Uses a repeating keyword to shift letters. Demonstrates polyalphabetic substitution, not modern security.</p><span class="feature-label">EDUCATIONAL ONLY</span></article>
+        <article class="feature-card"><span class="feature-icon">03</span><h3>AES-256-GCM</h3><p>Modern authenticated encryption with a passphrase-derived key, random salt, and a fresh nonce for every message.</p><span class="feature-label secure">AUTHENTICATED ENCRYPTION</span></article>
+        <article class="feature-card"><span class="feature-icon">04</span><h3>SHA-256</h3><p>Produces a fixed-size fingerprint of input text. Hashing is one-way, not encryption, and cannot be decrypted.</p><span class="feature-label">ONE-WAY HASH</span></article>
+      </div></section>
+    </main>
+    <footer class="site-footer"><span>© CipherLab · Educational cryptography project</span><span>Built with HTML, CSS, JavaScript &amp; Node.js</span></footer>
+  </div>
+</body>
+</html>
